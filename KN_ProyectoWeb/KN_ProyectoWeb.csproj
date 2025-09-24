@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <Content Include="StaticFiles\css\perfect-scrollbar.css" />
     <Content Include="StaticFiles\css\theme-default.css" />
     <Content Include="StaticFiles\fonts\boxicons.svg" />
+    <Content Include="StaticFiles\img\1.png" />
     <Content Include="StaticFiles\js\bootstrap.js" />
     <Content Include="StaticFiles\js\config.js" />
     <Content Include="StaticFiles\js\helpers.js" />
@@ -160,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -169,6 +170,8 @@
     <Content Include="StaticFiles\fonts\boxicons.woff" />
     <Content Include="StaticFiles\fonts\boxicons.woff2" />
     <Content Include="Views\Home\Registro.cshtml" />
+    <Content Include="Views\Home\Principal.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
