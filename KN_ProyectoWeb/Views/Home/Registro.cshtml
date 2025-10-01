@@ -1,4 +1,4 @@
-﻿
+﻿@model KN_ProyectoWeb.Models.User
 @{
     ViewBag.Title = "Registro";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
@@ -60,40 +60,29 @@
                         <span class="app-brand-text demo text-body fw-bolder text-capitalize">Sign Up</span>
                     </a>
                 </div>
-
-                <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                @using (Html.BeginForm("Registro", "Home"))
+                {
                     <div class="mb-3">
                         <label for="username" class="form-label">Id</label>
-                        <input type="text"
-                               class="form-control"
-                               id="user-id"
-                               name="user-id" />
+                        @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Name</label>
-                        <input type="text"
-                               class="form-control"
-                               id="name"
-                               name="name" />
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email"/>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email" })
                     </div>
                     <div class="mb-3 form-password-toggle">
                         <label class="form-label" for="password">Password</label>
                         <div class="input-group input-group-merge">
-                            <input type="password"
-                                   id="password"
-                                   class="form-control"
-                                   name="password"
-                                   aria-describedby="password" />
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
                             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
                     </div>
-                    <button class="btn btn-primary d-grid w-100">Sign up</button>
-                </form>
-
+                    <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+                }
                 <p class="text-center">
                     <span>Already have an account?</span>
                     <a href="@Url.Action("Index","Home")">

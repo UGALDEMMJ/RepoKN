@@ -1,4 +1,5 @@
-﻿using KN_ProyectoWeb.Models;
+﻿using KN_ProyectoWeb.EF;
+using KN_ProyectoWeb.Models;
 using System.Web.Mvc;
 
 namespace KN_ProyectoWeb.Controllers
@@ -29,6 +30,22 @@ namespace KN_ProyectoWeb.Controllers
         [HttpPost]
         public ActionResult Registro(User user)
         {
+            using(var context = new BD_KNEntities()) 
+            {
+                var newUser = new tbUser
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = user.Password,
+                    ConsecutivePerfil = 2,
+                    State = true
+                };
+
+                context.tbUser.Add(newUser);
+                context.SaveChanges();
+            }
+
             return View();
         }
         #endregion
