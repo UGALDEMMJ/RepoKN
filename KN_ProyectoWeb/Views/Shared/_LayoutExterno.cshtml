@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport"content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>Proyecto Web KN</title>
 
@@ -15,8 +15,12 @@
     <link href="~/StaticFiles/css/page-auth.css" rel="stylesheet" />
     <link href="~/StaticFiles/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="~/StaticFiles/css/theme-default.css" rel="stylesheet" />
+
     <script src="~/StaticFiles/js/config.js"></script>
     <script src="~/StaticFiles/js/helpers.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +29,7 @@
     <div class="container-xxl">
         @RenderBody()
     </div>
-    <script src="~/StaticFiles/js/jquery.js"></script>
+    @*<script src="~/StaticFiles/js/jquery.js"></script>*@
     <script src="~/StaticFiles/js/popper.js"></script>
     <script src="~/StaticFiles/js/perfect-scrollbar.js"></script>
     <script src="~/StaticFiles/js/bootstrap.js"></script>

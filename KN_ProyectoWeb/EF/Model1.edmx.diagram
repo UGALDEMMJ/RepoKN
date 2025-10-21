@@ -4,9 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="75e10adc2fd749fe8f47908ff41a09a1" Name="Diagram1">
+      <Diagram DiagramId="3bd03d868f8c4ed383bdb0de5f7b3f8c" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_KNModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KNModel.tbCategory" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KNModel.tbPerfil" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_KNModel.tbProduct" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_KNModel.tbUser" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BD_KNModel.FK_tbProduct_tbCategory1" ManuallyRouted="false" />
         <AssociationConnector Association="BD_KNModel.FK_tbUser_tbPerfil" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

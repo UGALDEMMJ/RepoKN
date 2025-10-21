@@ -1,10 +1,8 @@
 ﻿@model KN_ProyectoWeb.Models.User
+
 @{
-    ViewBag.Title = "Registro";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
-
-<h2>Registro</h2>
 
 <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
@@ -60,15 +58,24 @@
                         <span class="app-brand-text demo text-body fw-bolder text-capitalize">Sign Up</span>
                     </a>
                 </div>
-                @using (Html.BeginForm("Registro", "Home"))
+
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-primary text-center" role="alert">
+                        @ViewBag.Message
+                    </div>
+                }
+
+
+                @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new {@id="SignUpForm"}))
                 {
                     <div class="mb-3">
                         <label for="username" class="form-label">Id</label>
-                        @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @onkeyup = "getName();"})
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Name</label>
-                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @readOnly = true })
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -95,3 +102,4 @@
     </div>
 </div>
 
+<script src="~/StaticFiles/js/SignUp.js"></script>

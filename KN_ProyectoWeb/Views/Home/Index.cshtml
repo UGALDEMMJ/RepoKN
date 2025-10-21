@@ -59,23 +59,26 @@
                         <span class="app-brand-text demo text-body fw-bolder text-capitalize">Login</span>
                     </a>
                 </div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-primary text-center" role="alert">
+                        @ViewBag.Message
+                    </div>
+                }
 
-                @using (Html.BeginForm("Index", "Home"))
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {@id="LoginForm"}))
                 {
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email" })
                     </div>
                     <div class="mb-3 form-password-toggle">
-                        <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">Password</label>
+                        <label class="form-label" for="password">Password</label>
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
+                        <div class="d-flex justify-content-end">
                             <a href="@Url.Action("ForgotPassword", "Home")">
                                 <small>Forgot Password?</small>
                             </a>
-                        </div>
-                        <div class="input-group input-group-merge">
-                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
-                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -85,7 +88,7 @@
 
                 <p class="text-center">
                     <span>New on our platform?</span>
-                    <a href="@Url.Action("Registro","Home")">
+                    <a href="@Url.Action("SignUp","Home")">
                         <span>Create an account</span>
                     </a>
                 </p>
@@ -94,3 +97,5 @@
         <!-- /Register -->
     </div>
 </div>
+
+<script src="~/StaticFiles/js/Login.js"></script>
