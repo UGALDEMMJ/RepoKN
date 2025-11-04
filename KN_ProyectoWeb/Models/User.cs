@@ -11,6 +11,7 @@ namespace KN_ProyectoWeb.Models
         public String Name { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
-
+        public String PerfilName { get; set; }
+        public int ConsecutiveUser { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace KN_ProyectoWeb.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int ConsecutiveCategory { get; set; }
+        public string CategoryName { get; set; }
         public bool State { get; set; }
         public string ImageUrl { get; set; }
     }
