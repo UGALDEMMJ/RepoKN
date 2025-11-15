@@ -13,5 +13,6 @@ namespace KN_ProyectoWeb.Models
         public String Password { get; set; }
         public String PerfilName { get; set; }
         public int ConsecutiveUser { get; set; }
+        public String ConfirmPassword { get; set; }
     }
 }

@@ -205,8 +205,10 @@
     <Content Include="StaticFiles\js\bootstrap.js" />
     <Content Include="StaticFiles\js\config.js" />
     <Content Include="StaticFiles\js\ForgotPassword.js" />
+    <Content Include="StaticFiles\js\GetPerfil.js" />
     <Content Include="StaticFiles\js\helpers.js" />
     <Content Include="StaticFiles\js\Login.js" />
+    <Content Include="StaticFiles\js\Security.js" />
     <Content Include="StaticFiles\js\SignUp.js" />
     <Content Include="StaticFiles\js\jquery.js" />
     <Content Include="StaticFiles\js\main.js" />
@@ -246,8 +248,9 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
-    <Content Include="Views\Products\getProducts.cshtml" />
-    <Content Include="Views\User\getPerfil.cshtml" />
+    <Content Include="Views\User\GetPerfil.cshtml" />
+    <Content Include="Views\Products\GetProducts.cshtml" />
+    <Content Include="Views\User\UpdatePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

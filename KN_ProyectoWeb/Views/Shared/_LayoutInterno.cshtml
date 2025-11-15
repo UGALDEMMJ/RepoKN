@@ -26,8 +26,10 @@
     <link href="~/StaticFiles/css/page-auth.css" rel="stylesheet" />
     <link href="~/StaticFiles/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="~/StaticFiles/css/theme-default.css" rel="stylesheet" />
+
     <script src="~/StaticFiles/js/config.js"></script>
     <script src="~/StaticFiles/js/helpers.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 </head>
@@ -95,18 +97,18 @@
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
-                    
-                    <!-- Layouts -->
-                  <li class="menu-header small text-uppercase">
-                      <span class="menu-header-text">Maintenances</span>
-                  </li>
 
-                  <li class="menu-item">
-                      <a href="@Url.Action("getProducts","Products")" class="menu-link">
-                          <i class="menu-icon tf-icon bx bx-collection"></i>
-                          <div data-il8n="Basic">Products</div>
-                      </a>
-                  </li>
+                    <!-- Layouts -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Maintenances</span>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="@Url.Action("GetProducts","Products")" class="menu-link">
+                            <i class="menu-icon tf-icon bx bx-collection"></i>
+                            <div data-il8n="Basic">Products</div>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- / Menu -->
@@ -136,7 +138,7 @@
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            
+
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -157,15 +159,15 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="@Url.Action("GetPerfil","User")">
                                             <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
+                                            <span class="align-middle">Perfil</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="@Url.Action("UpdatePassword","User")">
                                             <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
+                                            <span class="align-middle">Seguridad</span>
                                         </a>
                                     </li>
                                     <li>
@@ -174,7 +176,7 @@
                                     <li>
                                         <a class="dropdown-item" href="@Url.Action("LogOut","Home")">
                                             <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
+                                            <span class="align-middle">Cerrar Sesión</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -190,7 +192,7 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
                         @RenderBody()
-                       
+
                     </div>
                     <!-- / Content -->
                     <!-- Footer -->
@@ -214,7 +216,7 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
 
-    <script src="~/StaticFiles/js/jquery.js"></script>
+    @*<script src="~/StaticFiles/js/jquery.js"></script>*@
     <script src="~/StaticFiles/js/popper.js"></script>
     <script src="~/StaticFiles/js/perfect-scrollbar.js"></script>
     <script src="~/StaticFiles/js/bootstrap.js"></script>
@@ -223,5 +225,13 @@
     <script src="~/StaticFiles/js/menu.js"></script>
     <script src="~/StaticFiles/js/main.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+        window.addEventListener("pageshow", function (event) {
+            if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                window.location.reload(true);
+            }
+        });
+    </script>
 </body>
 </html>

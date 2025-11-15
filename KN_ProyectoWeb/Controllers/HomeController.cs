@@ -9,7 +9,6 @@ using System.Web.UI;
 
 namespace KN_ProyectoWeb.Controllers
 {
-    [OutputCache(Duration = 0, Location = OutputCacheLocation.None, NoStore = true, VaryByParam ="*")]
     public class HomeController : Controller
     {
         Utilities utilities = new Utilities();

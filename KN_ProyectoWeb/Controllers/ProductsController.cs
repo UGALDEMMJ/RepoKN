@@ -12,11 +12,10 @@ using KN_ProyectoWeb.Models;
 namespace KN_ProyectoWeb.Controllers
 {
     [Security]
-    [OutputCache(Duration = 0, Location = OutputCacheLocation.None, NoStore = true, VaryByParam = "*")]
     public class ProductsController : Controller
     {
         [HttpGet]
-        public ActionResult getProducts()
+        public ActionResult GetProducts()
         {
             using (var context = new BD_KNEntities1())
             {
@@ -30,7 +29,7 @@ namespace KN_ProyectoWeb.Controllers
                     State = x.State,
                     ImageUrl = x.ImageUrl
                 }).ToList();
-                return View(result);
+                return View(data);
             }
         }
     }
