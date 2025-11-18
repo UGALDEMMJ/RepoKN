@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace KN_ProyectoWeb.Models
+﻿namespace KN_ProyectoWeb.Models
 {
     public class Product
     {
@@ -15,5 +10,6 @@ namespace KN_ProyectoWeb.Models
         public string CategoryName { get; set; }
         public bool State { get; set; }
         public string ImageUrl { get; set; }
+        public string Quantity { get; set; }
     }
 }

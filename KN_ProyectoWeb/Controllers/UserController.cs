@@ -1,13 +1,9 @@
 ﻿using KN_ProyectoWeb.EF;
 using KN_ProyectoWeb.Models;
 using KN_ProyectoWeb.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace KN_ProyectoWeb.Controllers
 {

@@ -1,0 +1,69 @@
+﻿﻿@model KN_ProyectoWeb.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-xl-1">
+    </div>
+
+    <div class="col-xl-10">
+
+        <div class="card mb-4 mt-4">
+
+            @if (ViewBag.Mensaje != null)
+            {
+                <div class="alert alert-primary text-center">
+                    @ViewBag.Mensaje
+                </div>
+            }
+
+            <h5 class="card-header">Add Products</h5>
+
+            @using (Html.BeginForm("AddProducts", "Products", FormMethod.Post, new { @id = "FormAddProduct", @enctype = "multipart/form-data" }))
+            {
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "4" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        @Html.DropDownListFor(x => x.ConsecutiveCategory, ViewBag.CategoryList as List<SelectListItem>, new { @class = "form-control" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Imagen</label>
+                        <input type="file" class="form-control" id="ImgP" name="ImgP">
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary d-grid w-25" type="submit">Procesar</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
+
+<script src="~/StaticFiles/js/AddProduct.js"></script>

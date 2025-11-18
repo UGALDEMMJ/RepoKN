@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace KN_ProyectoWeb.Controllers
 {
@@ -31,6 +30,7 @@ namespace KN_ProyectoWeb.Controllers
                     Session["ConsecutiveUser"] = result.ConsecutiveUser;
                     Session["Username"] = result.Name;
                     Session["Perfil"] = result.tbPerfil.Name;
+                    Session["ConsecutivePerfil"] = result.ConsecutivePerfil;
                     return RedirectToAction("Principal", "Home");
                 }
 
