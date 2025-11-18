@@ -4,7 +4,7 @@
 }
 
 <div class="col-12">
-    <div class="card overflow-hidden" style="height: 500px">
+    <div class="card overflow-hidden">
 
         <div class="d-flex align-items-center">
             <h5 class="card-header mb-0">Productos</h5>
@@ -35,6 +35,9 @@
                             <td>@item.CategoryName</td>
                             <td>@(item.State ? "Active" : "Inactive")</td>
                             <td><img src="@item.ImageUrl" width="200" height="150"></td>
+                            <td>
+                                <a href="@Url.Action("UpdateProducts", "Products", new {q = item.ConsecutiveProduct})">Update</a>
+                            </td>
                         </tr>
                     }
 

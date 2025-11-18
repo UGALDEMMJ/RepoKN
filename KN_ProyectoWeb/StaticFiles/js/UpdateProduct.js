@@ -1,6 +1,6 @@
 ﻿$(function () {
 
-    $("#FormAddProduct").validate({
+    $("#FormUpdateProduct").validate({
         rules: {
             Name: {
                 required: true
@@ -12,7 +12,7 @@
                 required: true,
                 decimal: true
             },
-            //Quantity: {
+            //Cantidad: {
             //    required: true,
             //    number: true
             //},
@@ -20,7 +20,6 @@
                 required: true
             },
             ImageProduct: {
-                required: true,
                 extension: "png",
                 filesize: 2 * 1024 * 1024 // 2 MB en bytes
             }
@@ -34,36 +33,38 @@
             },
             Price: {
                 required: "* Requerido",
-                decimal: "* Use a valid number"
+                decimal: "* Ingrese un número válido"
             },
-            //Quantity: {
+            //Cantidad: {
             //    required: "* Requerido",
-            //    number: "* Use a valid number"
+            //    number: "* Ingrese un número válido"
             //},
             ConsecutiveCategory: {
                 required: "* Requerido",
             },
             ImageProduct: {
-                required: "* Requerido",
-                extension: "Only .png format",
-                filesize: "Max size 2 MB"
+                extension: "Solo se permiten archivos .png",
+                filesize: "El tamaño máximo es de 2 MB"
             }
         }
     });
 
-    $.validator.addMethod("regex", function (value, element, pattern) {
-        return this.optional(element) || pattern.test(value);
-    });
-
     $.validator.addMethod("filesize", function (value, element, param) {
         if (element.files.length === 0) {
-            return false;
+            return true;
         }
         return element.files[0].size <= param;
-    }, "The file size is to big.");
+    }, "El archivo es demasiado grande.");
 
     $.validator.addMethod("extension", function (value, element, param) {
-        return this.optional(element) || new RegExp("\\.(" + param + ")$", "i").test(value);
-    }, "Incorrect format.");
+        if (!value) {
+            return true;
+        }
+        return new RegExp("\\.(" + param + ")$", "i").test(value);
+    }, "Formato de archivo no permitido.");
+
+    $.validator.addMethod("decimal", function (value, element) {
+        return this.optional(element) || /^\d+(\,\d{1,2})?$/.test(value);
+    }, "Ingrese un número válido (use solo un punto decimal).");
 
 });

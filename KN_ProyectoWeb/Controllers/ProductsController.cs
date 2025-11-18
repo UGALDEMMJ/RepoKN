@@ -22,7 +22,7 @@ namespace KN_ProyectoWeb.Controllers
             return View(results);
         }
 
-        #region AgregarProductos
+        #region AddProductos
 
         [HttpGet]
         public ActionResult AddProducts()
@@ -32,7 +32,7 @@ namespace KN_ProyectoWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProducts(Product product, HttpPostedFileBase ImageP)
+        public ActionResult AddProducts(Product product, HttpPostedFileBase ImageProduct)
         {
             using (var context = new BD_KNEntities1())
             {
@@ -54,15 +54,15 @@ namespace KN_ProyectoWeb.Controllers
                 if (result > 0)
                 {
                     //Guardar la imagen
-                    var ext = Path.GetExtension(ImageP.FileName);
-                    var ruta = AppDomain.CurrentDomain.BaseDirectory + "ImgProductos\\" + newProduct.ConsecutiveProduct + ext;
-                    ImageP.SaveAs(ruta);
+                    var ext = Path.GetExtension(ImageProduct.FileName);
+                    var ruta = AppDomain.CurrentDomain.BaseDirectory + "ImgProducts\\" + newProduct.ConsecutiveProduct + ext;
+                    ImageProduct.SaveAs(ruta);
 
                     //Actualizar la ruta de la imagen
                     newProduct.ImageUrl = "/ImgProducts/" + newProduct.ConsecutiveProduct + ext;
                     context.SaveChanges();
 
-                    return RedirectToAction("GetProductos", "Products");
+                    return RedirectToAction("GetProducts", "Products");
                 }
             }
 
@@ -73,7 +73,7 @@ namespace KN_ProyectoWeb.Controllers
 
         #endregion
 
-        #region ActualizarProductos
+        #region UpdateProductos
 
         [HttpGet]
         public ActionResult UpdateProducts(int q)
@@ -101,7 +101,7 @@ namespace KN_ProyectoWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateProducts(Product product, HttpPostedFileBase ImgP)
+        public ActionResult UpdateProducts(Product product, HttpPostedFileBase ImageProduct)
         {
             using (var context = new BD_KNEntities1())
             {
@@ -121,12 +121,12 @@ namespace KN_ProyectoWeb.Controllers
                     context.Entry(result).State = EntityState.Modified;
                     var updateResult = context.SaveChanges();
 
-                    if (ImgP != null)
+                    if (ImageProduct != null)
                     {
                         //Guardar la imagen
-                        var ext = Path.GetExtension(ImgP.FileName);
-                        var ruta = AppDomain.CurrentDomain.BaseDirectory + "ImgP\\" + product.ConsecutiveProduct + ext;
-                        ImgP.SaveAs(ruta);
+                        var ext = Path.GetExtension(ImageProduct.FileName);
+                        var ruta = AppDomain.CurrentDomain.BaseDirectory + "ImgProducts\\" + product.ConsecutiveProduct + ext;
+                        ImageProduct.SaveAs(ruta);
                     }
 
                     if (updateResult > 0)
@@ -135,7 +135,7 @@ namespace KN_ProyectoWeb.Controllers
                 }
 
                 getCategory();
-                ViewBag.Mensaje = "Error Couldnt Update";
+                ViewBag.Mensaje = "Error Updating the info";
                 return View(product);
             }
         }

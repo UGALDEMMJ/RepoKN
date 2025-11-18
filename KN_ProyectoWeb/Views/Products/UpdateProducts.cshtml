@@ -20,14 +20,23 @@
                 </div>
             }
 
-            <h5 class="card-header">Add Products</h5>
+            <h5 class="card-header">Update Producto</h5>
 
-            @using (Html.BeginForm("AddProducts", "Products", FormMethod.Post, new { @id = "FormAddProduct", @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("UpdateProducts", "Products", FormMethod.Post, new { @id = "FormUpdateProduct", @enctype = "multipart/form-data" }))
             {
+                @Html.HiddenFor(x => x.ConsecutiveProduct)
+                @Html.HiddenFor(x => x.ImageUrl)
+
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-10">
+                            <label class="form-label">Name</label>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-md-2">
+                            <img src="@Model.ImageUrl" width="110" height="75">
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -41,12 +50,12 @@
                     </div>
 
                     @*<div class="mb-3">
-                        <label class="form-label">Quantity</label>
-                        @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+                        <label class="form-label">Cantidad</label>
+                        @Html.TextBoxFor(x => x.Cantidad, new { @class = "form-control" })
                     </div>*@
 
                     <div class="mb-3">
-                        <label class="form-label">Category</label>
+                        <label class="form-label">Categoría</label>
                         @Html.DropDownListFor(x => x.ConsecutiveCategory, ViewBag.CategoryList as List<SelectListItem>, new { @class = "form-control" })
                     </div>
 
@@ -56,7 +65,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary d-grid w-25" type="submit">Submit</button>
+                        <button class="btn btn-primary d-grid w-25" type="submit">Procesar</button>
                     </div>
                 </div>
             }
@@ -66,4 +75,4 @@
     </div>
 </div>
 
-<script src="~/StaticFiles/js/AddProduct.js"></script>
+<script src="~/StaticFiles/js/UpdateProduct.js"></script>

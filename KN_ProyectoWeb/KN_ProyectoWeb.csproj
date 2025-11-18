@@ -214,6 +214,7 @@
     <Content Include="StaticFiles\js\menu.js" />
     <Content Include="StaticFiles\js\perfect-scrollbar.js" />
     <Content Include="StaticFiles\js\popper.js" />
+    <Content Include="StaticFiles\js\UpdateProduct.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -230,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImgProducts\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="EF\Model1.edmx">
@@ -251,6 +253,7 @@
     <Content Include="Views\Products\GetProducts.cshtml" />
     <Content Include="Views\User\UpdatePassword.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
+    <Content Include="Views\Products\UpdateProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
