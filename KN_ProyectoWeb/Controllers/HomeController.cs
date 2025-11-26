@@ -124,7 +124,31 @@ namespace KN_ProyectoWeb.Controllers
         [HttpGet]
         public ActionResult Principal()
         {
-            return View();
+            if (Session["ConsecutivePerfil"].ToString() == "1")
+                return RedirectToAction("Principal", "Admin");
+
+            using (var context = new BD_KNEntities1())
+            {
+
+
+                var result = context.tbProduct.Include("tbCategory")
+                    .Where(x => x.State == true
+                        && x.Quantity > 0).ToList();
+
+                //Convertirlo en un objeto Propio
+                var datos = result.Select(p => new Product
+                {
+                    ConsecutiveProduct = p.ConsecutiveProduct,
+                    Name = p.Name,
+                    Price = p.Price,
+                    //Cantidad = p.Cantidad,
+                    CategoryName= p.tbCategory.Name,
+                    State= p.State,
+                    ImageUrl = p.ImageUrl
+                }).ToList();
+
+                return View(datos);
+            }
         }
         #endregion
         #region LogOut

@@ -1,4 +1,5 @@
-﻿@model List<KN_ProyectoWeb.Models.Product>
+﻿﻿@model List<KN_ProyectoWeb.Models.Product>
+
 @{
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
@@ -8,20 +9,22 @@
 
         <div class="d-flex align-items-center">
             <h5 class="card-header mb-0">Productos</h5>
-            <a href="@Url.Action("AddProducts","Products")" class="btn btn-outline-primary">+ Add</a>
+            <a href="@Url.Action("AgregarProductos","Productos")" class="btn btn-outline-primary">+ Agregar</a>
         </div>
 
         <div class="card-body ps ps--active-x ps--active-y">
 
-            <table id="tProducts" class="table table-hover">
+            <table id="tProductos" class="table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Category</th>
                         <th>State</th>
                         <th>Imagen</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,11 +35,18 @@
                             <td>@item.ConsecutiveProduct</td>
                             <td>@item.Name</td>
                             <td>$ @item.Price.ToString("N2")</td>
+                            <td>@item.Quantity</td>
                             <td>@item.CategoryName</td>
                             <td>@(item.State ? "Active" : "Inactive")</td>
-                            <td><img src="@item.ImageUrl" width="200" height="150"></td>
+                            <td class="text-center"><img src="@item.ImageUrl" width="110" height="75"></td>
                             <td>
-                                <a href="@Url.Action("UpdateProducts", "Products", new {q = item.ConsecutiveProduct})">Update</a>
+                                <a href="@Url.Action("UpdateProducts","Products", new { q = item.ConsecutiveProduct })" style="margin-right:10px;">
+                                    <i class="fa fa-edit" style="font-size:20px;"></i>
+                                </a>
+
+                                <a href="@Url.Action("UpdateProductState", "Products", new { q = item.ConsecutiveProduct})">
+                                    <i class="fa @(item.State ? "fa-toggle-on text-success" : "fa-toggle-off text-danger")" style="font-size:22px;"></i>
+                                </a>
                             </td>
                         </tr>
                     }

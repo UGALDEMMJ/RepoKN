@@ -90,7 +90,7 @@ namespace KN_ProyectoWeb.Controllers
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
-                    //Quantity = p.Quantity,
+                    Quantity = p.Quantity,
                     ConsecutiveCategory = p.ConsecutiveCategory,
                     ImageUrl = p.ImageUrl
                 }).FirstOrDefault();
@@ -115,7 +115,7 @@ namespace KN_ProyectoWeb.Controllers
                     result.Name = product.Name;
                     result.Description = product.Description;
                     result.Price = product.Price;
-                    //result.Quantity = product.Quantity;
+                    result.Quantity = product.Quantity;
                     result.ConsecutiveCategory = product.ConsecutiveCategory;
 
                     context.Entry(result).State = EntityState.Modified;
@@ -209,7 +209,8 @@ namespace KN_ProyectoWeb.Controllers
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
-                    //Quantity = p.Quantity,
+                    Quantity = p.Quantity,
+                    State = p.State,
                     ConsecutiveCategory = p.ConsecutiveCategory,
                     ImageUrl = p.ImageUrl
                 }).ToList();

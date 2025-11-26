@@ -21,6 +21,7 @@ namespace KN_ProyectoWeb.EF
         public int ConsecutiveCategory { get; set; }
         public bool State { get; set; }
         public string ImageUrl { get; set; }
+        public Nullable<int> Quantity { get; set; }
     
         public virtual tbCategory tbCategory { get; set; }
     }

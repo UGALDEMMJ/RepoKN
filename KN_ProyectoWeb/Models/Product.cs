@@ -10,6 +10,6 @@
         public string CategoryName { get; set; }
         public bool State { get; set; }
         public string ImageUrl { get; set; }
-        public string Quantity { get; set; }
+        public int? Quantity { get; set; }
     }
 }

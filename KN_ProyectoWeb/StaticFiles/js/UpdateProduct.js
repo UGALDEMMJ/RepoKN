@@ -12,10 +12,10 @@
                 required: true,
                 decimal: true
             },
-            //Cantidad: {
-            //    required: true,
-            //    number: true
-            //},
+            Cantidad: {
+                required: true,
+                number: true
+            },
             ConsecutiveCategory: {
                 required: true
             },
@@ -35,10 +35,10 @@
                 required: "* Requerido",
                 decimal: "* Ingrese un número válido"
             },
-            //Cantidad: {
-            //    required: "* Requerido",
-            //    number: "* Ingrese un número válido"
-            //},
+            Cantidad: {
+                required: "* Requerido",
+                number: "* Ingrese un número válido"
+            },
             ConsecutiveCategory: {
                 required: "* Requerido",
             },

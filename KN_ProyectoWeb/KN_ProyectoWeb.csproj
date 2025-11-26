@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Views\User\UpdatePassword.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
     <Content Include="Views\Products\UpdateProducts.cshtml" />
+    <Content Include="Views\Admin\Principal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

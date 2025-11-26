@@ -12,10 +12,10 @@
                 required: true,
                 decimal: true
             },
-            //Quantity: {
-            //    required: true,
-            //    number: true
-            //},
+            Quantity: {
+                required: true,
+                number: true
+            },
             ConsecutiveCategory: {
                 required: true
             },
@@ -36,10 +36,10 @@
                 required: "* Requerido",
                 decimal: "* Use a valid number"
             },
-            //Quantity: {
-            //    required: "* Requerido",
-            //    number: "* Use a valid number"
-            //},
+            Quantity: {
+                required: "* Requerido",
+                number: "* Use a valid number"
+            },
             ConsecutiveCategory: {
                 required: "* Requerido",
             },

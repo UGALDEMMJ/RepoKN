@@ -40,6 +40,7 @@
           <Property Name="ConsecutiveCategory" Type="int" Nullable="false" />
           <Property Name="State" Type="bit" Nullable="false" />
           <Property Name="ImageUrl" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="tbUser">
           <Key>
@@ -175,6 +176,7 @@
           <Property Name="ConsecutiveCategory" Type="Int32" Nullable="false" />
           <Property Name="State" Type="Boolean" Nullable="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="tbCategory" Relationship="Self.FK_tbProduct_tbCategory1" FromRole="tbProduct" ToRole="tbCategory" />
         </EntityType>
         <EntityType Name="tbUser">
@@ -332,6 +334,7 @@
                 <ScalarProperty Name="ConsecutiveCategory" ColumnName="ConsecutiveCategory" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
