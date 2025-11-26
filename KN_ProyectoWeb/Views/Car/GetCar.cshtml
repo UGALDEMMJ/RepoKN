@@ -1,0 +1,53 @@
+﻿﻿@model List<KN_ProyectoWeb.Models.Car>
+
+@{
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<div class="col-12">
+    <div class="card overflow-hidden">
+
+        <div class="d-flex align-items-center">
+            <h5 class="card-header mb-0">Mi carrito</h5>
+        </div>
+
+        <div class="card-body ps ps--active-x ps--active-y">
+
+            <table id="tCarritos" class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>SubTotal</th>
+                        <th>Tax</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ConsecutiveProduct</td>
+                            <td>@item.Name</td>
+                            <td>$ @item.Price.ToString("N2")</td>
+                            <td>@item.Quantity</td>
+                            <td>$ @item.SubTotal.ToString("N2")</td>
+                            <td>$ @item.Tax.ToString("N2")</td>
+                            <td>$ @item.Total.ToString("N2")</td>
+                            <td>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/StaticFiles/js/GetCar.js"></script>

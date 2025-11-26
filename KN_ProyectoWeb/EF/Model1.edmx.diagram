@@ -12,6 +12,9 @@
         <EntityTypeShape EntityType="BD_KNModel.tbUser" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="BD_KNModel.FK_tbProduct_tbCategory1" ManuallyRouted="false" />
         <AssociationConnector Association="BD_KNModel.FK_tbUser_tbPerfil" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD_KNModel.tbCar" Width="1.5" PointX="5.25" PointY="4.25" />
+        <AssociationConnector Association="BD_KNModel.FK_tbCar_tbProduct" />
+        <AssociationConnector Association="BD_KNModel.FK_tbCar_tbUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

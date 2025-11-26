@@ -27,7 +27,7 @@ namespace KN_ProyectoWeb.Controllers
         [HttpGet]
         public ActionResult AddProducts()
         {
-            getCategory();
+            GetCategory();
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace KN_ProyectoWeb.Controllers
                 }
             }
 
-            getCategory();
+            GetCategory();
             ViewBag.Mensaje = "Error inserting the data";
             return View();
         }
@@ -95,7 +95,7 @@ namespace KN_ProyectoWeb.Controllers
                     ImageUrl = p.ImageUrl
                 }).FirstOrDefault();
 
-                getCategory();
+                GetCategory();
                 return View(data);
             }
         }
@@ -134,7 +134,7 @@ namespace KN_ProyectoWeb.Controllers
 
                 }
 
-                getCategory();
+                GetCategory();
                 ViewBag.Mensaje = "Error Updating the info";
                 return View(product);
             }
@@ -171,7 +171,7 @@ namespace KN_ProyectoWeb.Controllers
             }
         }
 
-        private void getCategory()
+        private void GetCategory()
         {
             using (var context = new BD_KNEntities1())
             {

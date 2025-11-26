@@ -141,8 +141,8 @@ namespace KN_ProyectoWeb.Controllers
                     ConsecutiveProduct = p.ConsecutiveProduct,
                     Name = p.Name,
                     Price = p.Price,
-                    //Cantidad = p.Cantidad,
-                    CategoryName= p.tbCategory.Name,
+                    Quantity = p.Quantity,
+                    CategoryName = p.tbCategory.Name,
                     State= p.State,
                     ImageUrl = p.ImageUrl
                 }).ToList();
@@ -151,6 +151,40 @@ namespace KN_ProyectoWeb.Controllers
             }
         }
         #endregion
+        [Security]
+        [HttpPost]
+        public ActionResult AddProductCar(Product product)
+        {
+            using (var context = new BD_KNEntities1())
+            {
+                var consecutiveUser = int.Parse(Session["ConsecutiveUser"].ToString());
+                var result = context.tbCar.Where
+                    (x => x.ConsecutiveProduct == product.ConsecutiveProduct 
+                    && x.ConsecutiveUser == consecutiveUser).FirstOrDefault();
+
+                if (result == null)
+                {
+                    var newCar = new tbCar
+                    {
+                        ConsecutiveUser = consecutiveUser,
+                        ConsecutiveProduct = product.ConsecutiveProduct,
+                        Quantity = product.Quantity.Value,
+                        Date = DateTime.Now
+                    };
+
+                    context.tbCar.Add(newCar);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    result.Quantity = product.Quantity.Value;
+                    context.SaveChanges();
+                }
+
+                return RedirectToAction("Principal", "Home");
+            }
+        }
+
         #region LogOut
         [Security]
         [HttpGet]

@@ -32,6 +32,7 @@ namespace KN_ProyectoWeb.EF
         public virtual DbSet<tbPerfil> tbPerfil { get; set; }
         public virtual DbSet<tbProduct> tbProduct { get; set; }
         public virtual DbSet<tbUser> tbUser { get; set; }
+        public virtual DbSet<tbCar> tbCar { get; set; }
     
         public virtual ObjectResult<AuthUsers_Result> AuthUsers(string email, string password)
         {

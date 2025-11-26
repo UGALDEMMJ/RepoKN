@@ -14,6 +14,12 @@ namespace KN_ProyectoWeb.EF
     
     public partial class tbUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbUser()
+        {
+            this.tbCar = new HashSet<tbCar>();
+        }
+    
         public long ConsecutiveUser { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -23,5 +29,7 @@ namespace KN_ProyectoWeb.EF
         public int ConsecutivePerfil { get; set; }
     
         public virtual tbPerfil tbPerfil { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbCar> tbCar { get; set; }
     }
 }

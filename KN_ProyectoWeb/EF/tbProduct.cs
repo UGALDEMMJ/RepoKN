@@ -14,6 +14,12 @@ namespace KN_ProyectoWeb.EF
     
     public partial class tbProduct
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbProduct()
+        {
+            this.tbCar = new HashSet<tbCar>();
+        }
+    
         public int ConsecutiveProduct { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -24,5 +30,7 @@ namespace KN_ProyectoWeb.EF
         public Nullable<int> Quantity { get; set; }
     
         public virtual tbCategory tbCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbCar> tbCar { get; set; }
     }
 }
