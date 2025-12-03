@@ -2,6 +2,7 @@
 using KN_ProyectoWeb.Models;
 using KN_ProyectoWeb.Services;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
@@ -127,28 +128,10 @@ namespace KN_ProyectoWeb.Controllers
             if (Session["ConsecutivePerfil"].ToString() == "1")
                 return RedirectToAction("Principal", "Admin");
 
-            using (var context = new BD_KNEntities1())
-            {
+            utilities.CalculateResumenActualCar();
 
-
-                var result = context.tbProduct.Include("tbCategory")
-                    .Where(x => x.State == true
-                        && x.Quantity > 0).ToList();
-
-                //Convertirlo en un objeto Propio
-                var datos = result.Select(p => new Product
-                {
-                    ConsecutiveProduct = p.ConsecutiveProduct,
-                    Name = p.Name,
-                    Price = p.Price,
-                    Quantity = p.Quantity,
-                    CategoryName = p.tbCategory.Name,
-                    State= p.State,
-                    ImageUrl = p.ImageUrl
-                }).ToList();
-
-                return View(datos);
-            }
+            var data = ConsultSellData();
+            return View(data);
         }
         #endregion
         [Security]
@@ -157,10 +140,17 @@ namespace KN_ProyectoWeb.Controllers
         {
             using (var context = new BD_KNEntities1())
             {
+                var availability = context.tbProduct.Where(x => x.ConsecutiveProduct == product.ConsecutiveProduct).FirstOrDefault();
+
+                if (product.Quantity > availability.Quantity)
+                {
+                    ViewBag.Mensaje = "We dont stock for those items, products in stock: " + availability.Quantity;
+                    return View("Principal", ConsultSellData());
+                }
+
                 var consecutiveUser = int.Parse(Session["ConsecutiveUser"].ToString());
-                var result = context.tbCar.Where
-                    (x => x.ConsecutiveProduct == product.ConsecutiveProduct 
-                    && x.ConsecutiveUser == consecutiveUser).FirstOrDefault();
+                var result = context.tbCar.Where(x => x.ConsecutiveProduct== product.ConsecutiveProduct 
+                && x.ConsecutiveUser == consecutiveUser).FirstOrDefault();
 
                 if (result == null)
                 {
@@ -177,7 +167,8 @@ namespace KN_ProyectoWeb.Controllers
                 }
                 else
                 {
-                    result.Quantity = product.Quantity.Value;
+                    result.Quantity= product.Quantity.Value;
+                    result.Date = DateTime.Now;
                     context.SaveChanges();
                 }
 
@@ -195,5 +186,30 @@ namespace KN_ProyectoWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
         #endregion
+
+        private List<Product> ConsultSellData()
+        {
+            using (var context = new BD_KNEntities1())
+            {
+                //Tomar el objeto de la BD
+                var result = context.tbProduct.Include("tbCategory")
+                    .Where(x => x.State == true
+                        && x.Quantity > 0).ToList();
+
+                //Convertirlo en un objeto Propio
+                var datos = result.Select(p => new Product
+                {
+                    ConsecutiveProduct = p.ConsecutiveProduct,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Quantity = p.Quantity,
+                    CategoryName = p.tbCategory.Name,
+                    State= p.State,
+                    ImageUrl = p.ImageUrl
+                }).ToList();
+
+                return datos;
+            }
+        }
     }
 }

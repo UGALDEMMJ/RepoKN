@@ -1,9 +1,12 @@
 ﻿
+using KN_ProyectoWeb.EF;
 using System;
 using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Web;
+using System.Linq;
 
 namespace KN_ProyectoWeb.Services
 {
@@ -55,6 +58,22 @@ namespace KN_ProyectoWeb.Services
 
                 message.To.Add(userEmail);
                 smtp.Send(message);
+            }
+        }
+
+        public void CalculateResumenActualCar()
+        {
+            using (var context = new BD_KNEntities1())
+            {
+                var consecutive = int.Parse(HttpContext.Current.Session["ConsecutiveUser"].ToString());
+
+                //Tomar el objeto de la BD
+                var result = context.tbCar.Include("tbProduct").Where(x => x.ConsecutiveUser == consecutive).ToList();
+
+                var subTotal = result.Sum(x => x.tbProduct.Price * x.Quantity);
+
+                HttpContext.Current.Session["Total"] = subTotal * 1.13M;
+                HttpContext.Current.Session["Cantidad"] = result.Sum(x => x.Quantity);
             }
         }
     }

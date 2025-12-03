@@ -214,6 +214,7 @@
     <Content Include="StaticFiles\js\GetProducts.js" />
     <Content Include="StaticFiles\js\helpers.js" />
     <Content Include="StaticFiles\js\Login.js" />
+    <Content Include="StaticFiles\js\Principal.js" />
     <Content Include="StaticFiles\js\Security.js" />
     <Content Include="StaticFiles\js\SignUp.js" />
     <Content Include="StaticFiles\js\jquery.js" />

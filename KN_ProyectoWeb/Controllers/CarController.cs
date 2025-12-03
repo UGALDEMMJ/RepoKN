@@ -5,11 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KN_ProyectoWeb.Models;
+using System.Security.Permissions;
+using KN_ProyectoWeb.Services;
 
 namespace KN_ProyectoWeb.Controllers
 {
+    [Security]
     public class CarController : Controller
     {
+        Utilities utilities = new Utilities();
+
         [HttpGet]
         public ActionResult GetCar()
         {
@@ -33,6 +38,28 @@ namespace KN_ProyectoWeb.Controllers
                 }).ToList();
 
                 return View(datos);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult RemoveProductCar(int q)
+        {
+            var consecutive = int.Parse(Session["ConsecutiveUser"].ToString());
+
+            using (var context = new BD_KNEntities1())
+            {
+                //Tomar el objeto de la BD
+                var result = context.tbCar.Where(x => x.ConsecutiveProduct== q && x.ConsecutiveUser== consecutive).FirstOrDefault();
+
+                //Si existe se manda a actualizar
+                if (result != null)
+                {
+                    context.tbCar.Remove(result);
+                    context.SaveChanges();
+                    utilities.CalculateResumenActualCar();
+                }
+
+                return RedirectToAction("VerMiCarrito", "Carrito");
             }
         }
     }
